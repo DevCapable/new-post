@@ -115,7 +115,6 @@ class LoginController
 
         try {
             $user = Socialite::driver('google')->stateless()->user();
-            dd($user);
             $userId = Auth::id();
             $post = Post::all();
             $isUser = User::where('email', $user->email)->first();
