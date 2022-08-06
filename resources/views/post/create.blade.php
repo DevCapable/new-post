@@ -5,8 +5,7 @@
         <form action="{{url('/user/createPost')}}" method="POST">
             @csrf
             <input type="hidden" name="user_id" value="{{Auth::id()}}">
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="addon-wrapping">#</span>
+            <div class="input-group flex-nowrap form-control">
                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="title" aria-label="Username" aria-describedby="addon-wrapping"
                 >
             </div>

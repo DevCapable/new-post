@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 /*
@@ -20,6 +21,15 @@ Route::post('/register',[controller::class,'register']);
 Route::group(['prefix'=>'post'], function (){
     Route::get('/login',[controller::class,'getLogin']);
     Route::post('/login',[controller::class,'login']);
+
+    Route::get('/sign-in/github',[LoginController::class, 'github']);
+    Route::get('/sign-in/github/redirect/',[LoginController::class,'githubRedirect']);
+
+    Route::get('/sign-in/facebook',[LoginController::class, 'facebook']);
+    Route::get('/facebook/callback/',[LoginController::class,'facebookRedirect']);
+
+    Route::get('/sign-in/google',[LoginController::class, 'google']);
+    Route::get('/google/callback/',[LoginController::class,'googleRedirect']);
 });
 
 Route::group(['prefix'=>'user'], function (){
@@ -29,7 +39,7 @@ Route::group(['prefix'=>'user'], function (){
     Route::delete('/delete/{post}',[controller::class,'destroy']);
     Route::delete('/delete/{post}',[controller::class,'destroy']);
 
-//    Route::delete('/delete/{post}',[controller::class,'destroy'])->middleware('can::delete.post');
+    Route::delete('/delete/{post}',[controller::class,'destroy'])->middleware('can::delete.post');
 });
 
 

@@ -15,22 +15,25 @@
             </thead>
             <tbody>
             @foreach($posts as $post)
-                @can('view', $post)
+
             <tr>
                 <th scope="row">{{++$no}}</th>
                 <td>{{$post->title}}</td>
                 <td>{{$post->content}}</td>
-                <td><button class="btn btn-info float-right">Edit</button>
+
+                <td>
+                    @can('view', $post)
+                    <button class="btn btn-info float-right">Edit</button>
                     <form action="user/delete/{{$post->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger float-right">Delete</button>
                     </form>
-
+                    @endcan
                     <button class="btn btn-primary float-right">View</button>
                 </td>
             </tr>
-                @endcan
+
             @endforeach
             </tbody>
         </table>

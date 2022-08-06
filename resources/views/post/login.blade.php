@@ -15,6 +15,8 @@
             </div>
             <br><br>
             <button class="btn btn-info" type="submit">Submit</button>
+            <button class="btn btn-info" type="submit"><a href="http://">Sign in With GigHub</a> </button>
+
         </form>
     </div>
 @stop
